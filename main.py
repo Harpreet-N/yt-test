@@ -11,7 +11,7 @@ class VideoRequest(BaseModel):
 def download_video(data: VideoRequest):
     try:
         result = subprocess.run(
-            ["yt-dlp", "-o", "%(title)s.%(ext)s", data.url],
+            ["yt-dlp", "--cookies", "youtube_cookies.txt", "-o", "%(title)s.%(ext)s", data.url],
             check=True,
             capture_output=True,
             text=True
